@@ -11,6 +11,7 @@ public:
 	virtual ~LinkedList();
 
 	void Add(T&& item);
+	void Add(const T& item);
 	
 	void Remove(const T& item);
 	void Clear();
@@ -22,11 +23,12 @@ public:
 
 private:
 	
-	LinkedListNode<T&>* FindNode(const T& value) const;
+	LinkedListNode<T>* FindNode(const T& value) const;
 	
 	int size;
 
-	LinkedListNode<T&>* head;
-	LinkedListNode<T&>* tail;
+	LinkedListNode<T>* head;
+	LinkedListNode<T>* tail;
 };
+
 

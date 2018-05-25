@@ -5,15 +5,11 @@ class LinkedListNode
 {
 public:
 	
+	LinkedListNode(const T& item);
 	LinkedListNode(T&& item);
 	virtual ~LinkedListNode();
 	
 	LinkedListNode * next;
-
-	const T& Get() const;
-	void Set(T&& value);
-
-protected:
-	T & data;
+	T data;
 };
 

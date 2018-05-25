@@ -1,8 +1,15 @@
 #include "LinkedListNode.h"
+#include <utility>
+
+template<typename T>
+LinkedListNode<T>::LinkedListNode(const T & item)
+{
+	this->data = item;
+}
 
 template<typename T>
 LinkedListNode<T>::LinkedListNode(T&& item)
-	: data(item)
+	: data(std::forward<T>(item))
 {
 	
 }
@@ -10,16 +17,4 @@ LinkedListNode<T>::LinkedListNode(T&& item)
 template<typename T>
 LinkedListNode<T>::~LinkedListNode()
 {
-}
-
-template<typename T>
-const T & LinkedListNode<T>::Get() const
-{
-	return data;
-}
-
-template<typename T>
-void LinkedListNode<T>::Set(T && value)
-{
-	data = value;
 }
