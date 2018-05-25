@@ -37,6 +37,24 @@ void LinkedList<T>::Add(const T & item)
 }
 
 template<typename T>
+void LinkedList<T>::Insert(T && item, const int index)
+{	
+	this->Insert(std::forward<const T&>(item), index);
+}
+
+template<typename T>
+void LinkedList<T>::Insert(const T & item, const int index)
+{
+	LinkedListNode<T>* newNode = new LinkedListNode<T>(item);
+	LinkedListNode<T>* targetNode = GetNodeInIndex(index);
+
+	newNode->next = targetNode->next;
+	targetNode->next = newNode;
+
+	size++;
+}
+
+template<typename T>
 void LinkedList<T>::Remove(const T& item)
 {
 	LinkedListNode<T>* previousNode = nullptr;
@@ -90,18 +108,7 @@ bool LinkedList<T>::Contains(const T& item) const
 template<typename T>
 const T & LinkedList<T>::operator[](int index)
 {
-	LinkedListNode<T>* tmp = head;
-	int counter = 0;
-	if (index > size || index < 0)
-		throw "Index out of bounds";
-
-	while (tmp != nullptr && counter < index)
-	{
-		tmp = tmp->next;
-		counter++;
-	}
-
-	return tmp->data;
+	return GetNodeInIndex(index)->data;
 }
 
 template<typename T>
@@ -124,5 +131,22 @@ LinkedListNode<T>* LinkedList<T>::FindNode(const T & value) const
 		tmp = tmp->next;
 	}
 	return nullptr;
+}
+
+template<typename T>
+LinkedListNode<T>* LinkedList<T>::GetNodeInIndex(const int index) const
+{
+	LinkedListNode<T>* tmp = head;
+	int counter = 0;
+	if (index >= size || index < 0)
+		throw "Index out of bounds";
+
+	while (tmp != nullptr && counter < index)
+	{
+		tmp = tmp->next;
+		counter++;
+	}
+
+	return tmp;
 }
 
