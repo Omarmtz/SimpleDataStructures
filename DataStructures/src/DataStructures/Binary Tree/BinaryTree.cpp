@@ -35,6 +35,17 @@ void BinaryTree<T>::Add(const T & item)
 }
 
 template<typename T>
+void BinaryTree<T>::Delete(T item)
+{
+}
+
+template<typename T>
+bool BinaryTree<T>::Contains(const T& item)
+{
+	return FindNode(root,item);
+}
+
+template<typename T>
 void BinaryTree<T>::Clear()
 {
 	Clear(root);
@@ -43,7 +54,7 @@ void BinaryTree<T>::Clear()
 }
 
 template<typename T>
-std::vector<T> BinaryTree<T>::Preorder()
+const std::vector<T> BinaryTree<T>::Preorder()
 {
 	std::vector<T> array;
 	Preorder(root, array);	
@@ -51,7 +62,7 @@ std::vector<T> BinaryTree<T>::Preorder()
 }
 
 template<typename T>
-std::vector<T> BinaryTree<T>::Inorder()
+const std::vector<T> BinaryTree<T>::Inorder()
 {
 	std::vector<T> array;
 	Inorder(root, array);
@@ -59,7 +70,7 @@ std::vector<T> BinaryTree<T>::Inorder()
 }
 
 template<typename T>
-std::vector<T> BinaryTree<T>::Postorder()
+const std::vector<T> BinaryTree<T>::Postorder()
 {
 	std::vector<T> array;
 	Postorder(root, array);
@@ -117,6 +128,11 @@ void BinaryTree<T>::Clear(BinaryTreeNode<T>* node)
 }
 
 template<typename T>
+void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, const T & item)
+{
+}
+
+template<typename T>
 void BinaryTree<T>::Preorder(BinaryTreeNode<T>* node, std::vector<T>& array)
 {
 	if (node == nullptr)
@@ -153,4 +169,26 @@ void BinaryTree<T>::Postorder(BinaryTreeNode<T>* node, std::vector<T>& array)
 	Preorder(node->left, array);	
 	Preorder(node->right, array);
 	array.push_back(node->data);
+}
+
+template<typename T>
+BinaryTreeNode<T>* BinaryTree<T>::FindNode(BinaryTreeNode<T>* node, const T & item)
+{
+	if (node == nullptr)
+	{
+		return nullptr;
+	}
+	if (item == node->data)
+	{
+		return node;
+	}
+	
+	if (node->data > item)
+	{
+		return FindNode(node->left, item);
+	}
+	else if (node->data >= item)
+	{
+		return FindNode(node->right, item);
+	}	
 }

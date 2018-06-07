@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 #include "src/DataStructures/LinkedList/LinkedList.h"
 #include "src/DataStructures/LinkedList/LinkedList.cpp"
@@ -8,50 +9,43 @@
 
 void SingleLinkedListExample();
 
+
+void PrintArray(BinaryTree<int> &tree, const std::vector<int> &array);
+
 int main()
 {
 	//SingleLinkedListExample();
 
 	BinaryTree<int> tree;
+
+	std::cout << "\nInserting\n";
+	int random = 0;
+	for (size_t i = 0; i < 10; i++)
+	{
+		random = std::rand() % 30;
+		std::cout << random << ",";
+		tree.Add(random);
+	}
+
+	std::cout << "\n\nPreorder";
+	PrintArray(tree, tree.Preorder());
+	std::cout << "\nInorder";
+	PrintArray(tree, tree.Inorder());
+	std::cout << "\nPostorder";
+	PrintArray(tree, tree.Postorder());
 	
-	tree.Add(9);
-	tree.Add(7);
-	tree.Add(11);
-	tree.Add(4);
-	tree.Add(6);
-	
-
-	std::cout << "Inorder" << std::endl;
-	auto array = tree.Inorder();
-
-	for (size_t i = 0; i < tree.Size(); i++)
-	{
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
-	std::cout << std::endl;
-	std::cout << "Preorder" << std::endl;
-	array = tree.Preorder();
-	for (size_t i = 0; i < tree.Size(); i++)
-	{
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
-	std::cout << std::endl;
-	std::cout << "Postorder" << std::endl;
-	array = tree.Postorder();
-	for (size_t i = 0; i < tree.Size(); i++)
-	{
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
-	tree.Clear();
-	tree.Add(6);
 	std::cin.get();
 	return 0;
+}
+
+void PrintArray(BinaryTree<int> &tree, const std::vector<int>&array)
+{
+	std::cout << std::endl;
+	for (size_t i = 0; i < tree.Size(); i++)
+	{
+		std::cout << array[i] << ",";
+	}
+	std::cout << std::endl;
 }
 
 void SingleLinkedListExample()
@@ -101,7 +95,7 @@ void SingleLinkedListExample()
 		std::cout << list[i] << std::endl;
 	}
 
-	std::cout << "List has "<< list.Size() << " elements" << std::endl;
+	std::cout << "List has " << list.Size() << " elements" << std::endl;
 	std::cout << "Clearing..." << std::endl;
 	list.Clear();
 	std::cout << "List has " << list.Size() << " elements" << std::endl;
