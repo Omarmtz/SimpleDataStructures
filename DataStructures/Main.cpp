@@ -3,12 +3,53 @@
 #include "src/DataStructures/LinkedList/LinkedList.h"
 #include "src/DataStructures/LinkedList/LinkedList.cpp"
 
+#include "src/DataStructures/Binary Tree/BinaryTree.h"
+#include "src/DataStructures/Binary Tree/BinaryTree.cpp"
+
 void SingleLinkedListExample();
 
 int main()
 {
-	SingleLinkedListExample();
+	//SingleLinkedListExample();
 
+	BinaryTree<int> tree;
+	
+	tree.Add(9);
+	tree.Add(7);
+	tree.Add(11);
+	tree.Add(4);
+	tree.Add(6);
+	
+
+	std::cout << "Inorder" << std::endl;
+	auto array = tree.Inorder();
+
+	for (size_t i = 0; i < tree.Size(); i++)
+	{
+		std::cout << array[i] << " ";
+	}
+	std::cout << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "Preorder" << std::endl;
+	array = tree.Preorder();
+	for (size_t i = 0; i < tree.Size(); i++)
+	{
+		std::cout << array[i] << " ";
+	}
+	std::cout << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "Postorder" << std::endl;
+	array = tree.Postorder();
+	for (size_t i = 0; i < tree.Size(); i++)
+	{
+		std::cout << array[i] << " ";
+	}
+	std::cout << std::endl;
+
+	tree.Clear();
+	tree.Add(6);
 	std::cin.get();
 	return 0;
 }
