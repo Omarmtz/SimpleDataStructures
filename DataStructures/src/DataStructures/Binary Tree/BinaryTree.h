@@ -37,14 +37,14 @@ private:
 	void Inorder(BinaryTreeNode<T>* node, std::vector<T>& array);
 	void Postorder(BinaryTreeNode<T>* node, std::vector<T>& array);
 
-	BinaryTreeNode<T>* FindNode(BinaryTreeNode<T>* node,const T& item);
+	BinaryTreeNode<T>* FindNode(BinaryTreeNode<T>* node, const T& item);
 	BinaryTreeNode<T>* FindNextNode(BinaryTreeNode<T>* node, const T& item);
-	
-	void FirstDeletionCase(BinaryTreeNode<T> * node);	
-	void SecondDeletionCaseLeft(BinaryTreeNode<T> * node);	
+
+	void FirstDeletionCase(BinaryTreeNode<T> * node);
+	void SecondDeletionCaseLeft(BinaryTreeNode<T> * node);
 	void SecondDeletionCaseRight(BinaryTreeNode<T> * node);
 	void ThirdDeletionCase(BinaryTreeNode<T> * node);
 
-	BinaryTreeNode<T>* root;
+	BinaryTreeNode<T>* root = nullptr;
 };
 
