@@ -37,6 +37,12 @@ void LinkedList<T>::Add(const T & item)
 }
 
 template<typename T>
+void LinkedList<T>::Remove(T && item)
+{
+	this->Remove(std::forward<const T&>(item));
+}
+
+template<typename T>
 void LinkedList<T>::Remove(const T& item)
 {
 	LinkedListNode<T>* previousNode = nullptr;
@@ -79,6 +85,12 @@ void LinkedList<T>::Clear()
 		head = head->next;
 		delete tmp;
 	}	
+}
+
+template<typename T>
+bool LinkedList<T>::Contains(T && item) const
+{
+	return this->Contains(std::forward<const T&>(item));
 }
 
 template<typename T>

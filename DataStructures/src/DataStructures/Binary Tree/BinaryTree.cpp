@@ -35,9 +35,21 @@ void BinaryTree<T>::Add(const T & item)
 }
 
 template<typename T>
-void BinaryTree<T>::Delete(T item)
+void BinaryTree<T>::Delete(T && item)
 {
-	this->Delete(this->root, nullptr, item);
+	this->Delete(std::forward<const T&>(item));	
+}
+
+template<typename T>
+void BinaryTree<T>::Delete(const T & item)
+{
+	this->Delete(this->root, item);
+}
+
+template<typename T>
+void BinaryTree<T>::Contains(T && item)
+{
+	this->Contains(std::forward<const T&>(item));
 }
 
 template<typename T>
@@ -133,6 +145,11 @@ void BinaryTree<T>::Clear(BinaryTreeNode<T>* node)
 template<typename T>
 void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, const T & item)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
+
 	if (item == node->data)
 	{
 		if (node->left == nullptr && node->right == nullptr)
@@ -142,12 +159,12 @@ void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, const T & item)
 		}
 		else if (node->left != nullptr && node->right == nullptr)
 		{
-			SecondDeletionCaseLeft(parent, node);
+			SecondDeletionCaseLeft(node);
 			return;
 		}
 		else if (node->left == nullptr && node->right != nullptr)
 		{
-			SecondDeletionCaseRight(parent, node);
+			SecondDeletionCaseRight(node);
 			return;
 		}
 		else
@@ -159,11 +176,11 @@ void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, const T & item)
 
 	if (node->data > item)
 	{
-		return Delete(node->left, node, item);
+		return Delete(node->left, item);
 	}
 	else if (node->data <= item)
 	{
-		return Delete(node->right, node, item);
+		return Delete(node->right, item);
 	}
 }
 
@@ -219,7 +236,7 @@ void BinaryTree<T>::FirstDeletionCase(BinaryTreeNode<T> * node)
 {
 	if (node->parent != nullptr && node == node->parent->left)
 	{
-		parent->left = nullptr;
+		node->parent->left = nullptr;
 	}
 	else if (node->parent != nullptr)
 	{
@@ -255,9 +272,9 @@ void BinaryTree<T>::Inorder(BinaryTreeNode<T>* node, std::vector<T>& array)
 		return;
 	}
 
-	Preorder(node->left, array);
+	Inorder(node->left, array);
 	array.push_back(node->data);
-	Preorder(node->right, array);
+	Inorder(node->right, array);
 }
 
 template<typename T>
@@ -268,8 +285,8 @@ void BinaryTree<T>::Postorder(BinaryTreeNode<T>* node, std::vector<T>& array)
 		return;
 	}
 
-	Preorder(node->left, array);
-	Preorder(node->right, array);
+	Postorder(node->left, array);
+	Postorder(node->right, array);
 	array.push_back(node->data);
 }
 
