@@ -104,12 +104,14 @@ void BinaryTree<T>::Add(BinaryTreeNode<T>* node, const T & item)
 	if (node->data > item && node->left == nullptr)
 	{
 		BinaryTreeNode<T>* newNode = new BinaryTreeNode<T>(item);
+		newNode->parent = node;
 		node->left = newNode;
 		size++;
 	}
 	else if (node->data <= item && node->right == nullptr)
 	{
 		BinaryTreeNode<T>* newNode = new BinaryTreeNode<T>(item);
+		newNode->parent = node;
 		node->right = newNode;
 		size++;
 	}
@@ -128,15 +130,14 @@ void BinaryTree<T>::Clear(BinaryTreeNode<T>* node)
 	delete node;
 }
 
-
 template<typename T>
-void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, BinaryTreeNode<T>* parent, const T & item)
+void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, const T & item)
 {
 	if (item == node->data)
 	{
 		if (node->left == nullptr && node->right == nullptr)
 		{
-			FirstDeletionCase(parent, node);
+			FirstDeletionCase(node);
 			return;
 		}
 		else if (node->left != nullptr && node->right == nullptr)
@@ -151,11 +152,7 @@ void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, BinaryTreeNode<T>* parent, c
 		}
 		else
 		{
-			auto nextNode = FindNextNode(node, node->data);
-			//TODO when delete is performed no nullptr is set so theres a bug in this code.
-			//how to set nullptr from parent
-			node->data = nextNode->data;
-			delete nextNode;
+			ThirdDeletionCase(node);
 			return;
 		}
 	}
@@ -171,45 +168,62 @@ void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, BinaryTreeNode<T>* parent, c
 }
 
 template<typename T>
-void BinaryTree<T>::SecondDeletionCaseRight(BinaryTreeNode<T> * parent, BinaryTreeNode<T> * node)
+void BinaryTree<T>::ThirdDeletionCase(BinaryTreeNode<T> * node)
 {
-	if (parent != nullptr && node == parent->left)
+	auto nextNode = FindNextNode(node, node->data);
+	node->data = nextNode->data;
+	if (nextNode->parent != nullptr && nextNode == nextNode->parent->left)
 	{
-		parent->left = node->right;
+		nextNode->parent->left = nullptr;
 	}
-	else if (parent != nullptr)
+	else if (nextNode->parent != nullptr)
 	{
-		parent->right = node->right;
+		nextNode->parent->right = nullptr;
+	}
+	delete nextNode;
+	size--;
+}
+
+template<typename T>
+void BinaryTree<T>::SecondDeletionCaseRight(BinaryTreeNode<T> * node)
+{
+	if (node->parent != nullptr && node == node->parent->left)
+	{
+		node->parent->left = node->right;
+	}
+	else if (node->parent != nullptr)
+	{
+		node->parent->right = node->right;
 	}
 	delete node;
 	size--;
 }
 
 template<typename T>
-void BinaryTree<T>::SecondDeletionCaseLeft(BinaryTreeNode<T> * parent, BinaryTreeNode<T> * node)
+void BinaryTree<T>::SecondDeletionCaseLeft(BinaryTreeNode<T> * node)
 {
-	if (parent != nullptr && node == parent->left)
+	if (node->parent != nullptr && node == node->parent->left)
 	{
-		parent->left = node->left;
+		node->parent->left = node->left;
 	}
-	else if (parent != nullptr)
+	else if (node->parent != nullptr)
 	{
-		parent->right = node->left;
+		node->parent->right = node->left;
 	}
 	delete node;
 	size--;
 }
 
 template<typename T>
-void BinaryTree<T>::FirstDeletionCase(BinaryTreeNode<T> * parent, BinaryTreeNode<T> * node)
+void BinaryTree<T>::FirstDeletionCase(BinaryTreeNode<T> * node)
 {
-	if (parent != nullptr && node == parent->left)
+	if (node->parent != nullptr && node == node->parent->left)
 	{
 		parent->left = nullptr;
 	}
-	else if (parent != nullptr)
+	else if (node->parent != nullptr)
 	{
-		parent->right = nullptr;
+		node->parent->right = nullptr;
 	}
 	else
 	{

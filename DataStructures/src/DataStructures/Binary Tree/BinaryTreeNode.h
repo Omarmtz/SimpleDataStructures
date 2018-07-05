@@ -12,6 +12,8 @@ public:
 	BinaryTreeNode * left = nullptr;
 	BinaryTreeNode * right = nullptr;
 
+	BinaryTreeNode * parent = nullptr;
+
 	T data;
 };
 

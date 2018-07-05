@@ -31,7 +31,7 @@ private:
 
 	void Clear(BinaryTreeNode<T>* node);
 
-	void Delete(BinaryTreeNode<T>* node, BinaryTreeNode<T>* parent, const T & item);
+	void Delete(BinaryTreeNode<T>* node, const T & item);
 
 	void Preorder(BinaryTreeNode<T>* node, std::vector<T>& array);
 	void Inorder(BinaryTreeNode<T>* node, std::vector<T>& array);
@@ -40,9 +40,10 @@ private:
 	BinaryTreeNode<T>* FindNode(BinaryTreeNode<T>* node,const T& item);
 	BinaryTreeNode<T>* FindNextNode(BinaryTreeNode<T>* node, const T& item);
 	
-	void FirstDeletionCase(BinaryTreeNode<T> * parent, BinaryTreeNode<T> * node);	
-	void SecondDeletionCaseLeft(BinaryTreeNode<T> * parent, BinaryTreeNode<T> * node);	
-	void SecondDeletionCaseRight(BinaryTreeNode<T> * parent, BinaryTreeNode<T> * node);
+	void FirstDeletionCase(BinaryTreeNode<T> * node);	
+	void SecondDeletionCaseLeft(BinaryTreeNode<T> * node);	
+	void SecondDeletionCaseRight(BinaryTreeNode<T> * node);
+	void ThirdDeletionCase(BinaryTreeNode<T> * node);
 
 	BinaryTreeNode<T>* root;
 };

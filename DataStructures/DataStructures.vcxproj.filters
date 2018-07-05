@@ -30,9 +30,6 @@
     <ClCompile Include="src\DataStructures\Binary Tree\BinaryTreeNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BINARYTREE.CPP">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DataStructures\LinkedList\LinkedList.h">

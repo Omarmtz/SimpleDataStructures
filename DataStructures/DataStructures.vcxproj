@@ -130,7 +130,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BINARYTREE.CPP" />
     <ClCompile Include="src\DataStructures\Binary Tree\BinaryTreeNode.cpp" />
     <ClCompile Include="src\DataStructures\Binary Tree\BinaryTree.cpp" />
     <ClCompile Include="src\DataStructures\LinkedList\LinkedListNode.cpp" />
