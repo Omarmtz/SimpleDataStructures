@@ -14,8 +14,12 @@ public:
 	void Add(T&& item);
 	void Add(const T & item);
 
-	void Delete(T item);
+	void Delete(T&& item);
+	void Delete(const T & item);
+
+	void Contains(T&& item);
 	bool Contains(const T& item);
+	
 	void Clear();
 
 	const std::vector<T>Preorder();

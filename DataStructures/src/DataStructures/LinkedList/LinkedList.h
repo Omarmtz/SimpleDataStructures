@@ -13,9 +13,13 @@ public:
 	void Add(T&& item);
 	void Add(const T& item);
 	
+	void Remove(T&& item);
 	void Remove(const T& item);
-	void Clear();
+
+	bool Contains(T&& item) const;
 	bool Contains(const T& item) const;
+
+	void Clear();	
 
 	const T& operator[](int index);
 

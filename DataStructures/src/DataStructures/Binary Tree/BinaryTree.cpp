@@ -35,9 +35,21 @@ void BinaryTree<T>::Add(const T & item)
 }
 
 template<typename T>
-void BinaryTree<T>::Delete(T item)
+void BinaryTree<T>::Delete(T && item)
+{
+	this->Delete(std::forward<const T&>(item));	
+}
+
+template<typename T>
+void BinaryTree<T>::Delete(const T & item)
 {
 	this->Delete(this->root, item);
+}
+
+template<typename T>
+void BinaryTree<T>::Contains(T && item)
+{
+	this->Contains(std::forward<const T&>(item));
 }
 
 template<typename T>
