@@ -133,6 +133,11 @@ void BinaryTree<T>::Clear(BinaryTreeNode<T>* node)
 template<typename T>
 void BinaryTree<T>::Delete(BinaryTreeNode<T>* node, const T & item)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
+
 	if (item == node->data)
 	{
 		if (node->left == nullptr && node->right == nullptr)
