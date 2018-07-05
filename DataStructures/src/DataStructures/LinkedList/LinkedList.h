@@ -27,8 +27,8 @@ private:
 	
 	int size;
 
-	LinkedListNode<T>* head;
-	LinkedListNode<T>* tail;
+	LinkedListNode<T>* head = nullptr;
+	LinkedListNode<T>* tail = nullptr;
 };
 
 
