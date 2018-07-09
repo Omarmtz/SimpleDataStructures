@@ -3,7 +3,7 @@
 #include "../DataStructures/src/DataStructures/DoubleLinkedList/DoubleLinkedList.h"
 #include "../DataStructures/src/DataStructures/DoubleLinkedList/DoubleLinkedList.cpp"
 
-TEST(DoubleLinkedListTests, PushBackFirstItem_DoubleLinkedList) {
+TEST(DoubleLinkedListTests, PushBackFirstItem_EmptyList_ElementPushed) {
 	DoubleLinkedList<int> list;
 
 	list.PushBack(1);
@@ -12,7 +12,7 @@ TEST(DoubleLinkedListTests, PushBackFirstItem_DoubleLinkedList) {
 	EXPECT_EQ(list.Size(), 1);
 }
 
-TEST(DoubleLinkedListTests, PushBackFirstItemLValue_DoubleLinkedList) {
+TEST(DoubleLinkedListTests, PushBackFirstItemLValue_EmptyList_ElementPushed) {
 	DoubleLinkedList<int> list;
 	int x = 1;
 	list.PushBack(x);
@@ -21,7 +21,7 @@ TEST(DoubleLinkedListTests, PushBackFirstItemLValue_DoubleLinkedList) {
 	EXPECT_EQ(list.Size(), 1);
 }
 
-TEST(DoubleLinkedListTests, PushBackMultipleItems_DoubleLinkedList) {
+TEST(DoubleLinkedListTests, PushBackMultipleItems_EmptyList_ElementsPushed) {
 	DoubleLinkedList<int> list;
 
 	list.PushBack(1);
@@ -36,7 +36,7 @@ TEST(DoubleLinkedListTests, PushBackMultipleItems_DoubleLinkedList) {
 	EXPECT_EQ(list.Size(), 4);
 }
 
-TEST(DoubleLinkedListTests, PushFrontFirstItem_DoubleLinkedList) {
+TEST(DoubleLinkedListTests, PushFrontFirstItem_EmptyList_ElementPushed) {
 	DoubleLinkedList<int> list;
 
 	list.PushFront(1);
@@ -45,7 +45,7 @@ TEST(DoubleLinkedListTests, PushFrontFirstItem_DoubleLinkedList) {
 	EXPECT_EQ(list.Size(), 1);
 }
 
-TEST(DoubleLinkedListTests, PushFrontFirstItemLValue_DoubleLinkedList) {
+TEST(DoubleLinkedListTests, PushFrontFirstItemLValue_EmptyList_ElementPushed) {
 	DoubleLinkedList<int> list;
 	int x = 1;
 	list.PushFront(x);
@@ -54,7 +54,7 @@ TEST(DoubleLinkedListTests, PushFrontFirstItemLValue_DoubleLinkedList) {
 	EXPECT_EQ(list.Size(), 1);
 }
 
-TEST(DoubleLinkedListTests, PushFrontMultipleItems_DoubleLinkedList) {
+TEST(DoubleLinkedListTests, PushFrontMultipleItems_EmptyList_ElementsPushed) {
 	DoubleLinkedList<int> list;
 
 	list.PushFront(1);
@@ -174,4 +174,36 @@ TEST(DoubleLinkedListTests, Clear_ListEmpty_ListCleared) {
 	EXPECT_ANY_THROW({
 		auto a = list[0];
 		});
+}
+
+
+TEST(DoubleLinkedListTests, PopBackFirstItem_EmptyList_ExceptionThrow) {
+	DoubleLinkedList<int> list;
+	ASSERT_ANY_THROW({ list.PopBack(); });
+}
+
+TEST(DoubleLinkedListTests, PopFrontFirstItem_EmptyList_ExceptionThrow) {
+	DoubleLinkedList<int> list;
+	ASSERT_ANY_THROW({ list.PopFront(); });
+}
+
+TEST(DoubleLinkedListTests, PushFrontItem_ListContainItems_HeadContainsPushedElement) {
+	DoubleLinkedList<int> list;
+	list.PushBack(1);
+	list.PushBack(2);
+	list.PushBack(3);
+	list.PushFront(4);
+
+	ASSERT_EQ(list.GetHead(), 4);
+	ASSERT_EQ(list[0], 4);
+}
+
+TEST(DoubleLinkedListTests, PushBackItem_ListContainItems_TailContainsPushedElement) {
+	DoubleLinkedList<int> list;
+	list.PushFront(1);
+	list.PushFront(2);
+	list.PushFront(3);
+	list.PushBack(4);
+
+	ASSERT_EQ(list.GetTail(), 4);	
 }

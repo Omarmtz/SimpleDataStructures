@@ -1,7 +1,7 @@
 #include "DoubleLinkedList.h"
 
 template<typename T>
-DoubleLinkedList<T>::DoubleLinkedList():
+DoubleLinkedList<T>::DoubleLinkedList() :
 	size(0)
 {
 }
@@ -54,10 +54,62 @@ void DoubleLinkedList<T>::PushFront(const T & item)
 	}
 	else
 	{
-		newNode->next = head;		
+		newNode->next = head;
 		head->previous = newNode;
 		head = newNode;
 	}
+}
+
+template<typename T>
+void DoubleLinkedList<T>::PopFront()
+{
+	DoubleLinkedListNode<T>* tmp = head;
+	if (head != nullptr)
+	{
+		head = head->next;				
+		size--;
+		if (head == tail)
+		{
+			tail = head->next;
+		}
+	}	
+	throw "Cannot extract element, empty list";
+}
+
+template<typename T>
+const T& DoubleLinkedList<T>::GetHead()
+{
+	if (head != nullptr)
+	{
+		return head->data;
+	}
+	throw "No items in list";
+}
+
+template<typename T>
+void DoubleLinkedList<T>::PopBack()
+{
+	DoubleLinkedListNode<T>* tmp = head;
+	if (tail != nullptr)
+	{
+		tail = tail->previous;
+		size--;
+		if (head == tail)
+		{
+			head = tail->previous;
+		}
+	}
+	throw "Cannot extract element, empty list";
+}
+
+template<typename T>
+const T& DoubleLinkedList<T>::GetTail()
+{
+	if (tail != nullptr)
+	{
+		return tail->data;
+	}
+	throw "No items in list";
 }
 
 
@@ -69,9 +121,9 @@ void DoubleLinkedList<T>::Remove(T && item)
 
 template<typename T>
 void DoubleLinkedList<T>::Remove(const T & item)
-{	
+{
 	DoubleLinkedListNode<T>* tmp = head;
-	
+
 	while (tmp != nullptr)
 	{
 		if (tmp->data == item)
@@ -83,12 +135,12 @@ void DoubleLinkedList<T>::Remove(const T & item)
 				if (head != nullptr)
 				{
 					head->previous = nullptr;
-				}			
+				}
 			}
 			if (tmp == tail)
-			{					
+			{
 				tail = tmp->previous;
-				
+
 				if (tail != nullptr)
 				{
 					tail->next = nullptr;
@@ -123,10 +175,10 @@ bool DoubleLinkedList<T>::Contains(const T & item) const
 template<typename T>
 void DoubleLinkedList<T>::Clear()
 {
-	DoubleLinkedListNode<T>* tmp = head;	
-		
+	DoubleLinkedListNode<T>* tmp = head;
+
 	while (head != nullptr)
-	{		
+	{
 		tmp = head;
 		head = head->next;
 		delete tmp;

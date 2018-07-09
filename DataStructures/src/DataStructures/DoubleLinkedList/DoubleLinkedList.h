@@ -15,6 +15,11 @@ public:
 	void PushFront(T&& item);
 	void PushFront(const T& item);
 
+	void PopFront();
+	const T& GetHead();
+	void PopBack();
+	const T& GetTail();
+
 	void Remove(T&& item);
 	void Remove(const T& item);
 
@@ -29,7 +34,7 @@ public:
 
 private:
 	int size;
-	
+
 	DoubleLinkedListNode<T>* FindNode(const T& value) const;
 
 	DoubleLinkedListNode<T>* head = nullptr;

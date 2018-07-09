@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\DataStructures\Queue\Queue.cpp" />
     <ClCompile Include="src\DataStructures\DoubleLinkedList\DoubleLinkedList.cpp" />
     <ClCompile Include="src\DataStructures\DoubleLinkedList\DoubleLinkedListNode.cpp" />
     <ClCompile Include="src\DataStructures\Binary Tree\BinaryTreeNode.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DataStructures\Queue\Queue.h" />
     <ClInclude Include="src\DataStructures\DoubleLinkedList\DoubleLinkedList.h" />
     <ClInclude Include="src\DataStructures\DoubleLinkedList\DoubleLinkedListNode.h" />
     <ClInclude Include="src\DataStructures\Binary Tree\BinaryTreeNode.h" />
