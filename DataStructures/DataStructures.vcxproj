@@ -130,17 +130,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\DataStructures\Queue\Queue.cpp" />
+    <ClCompile Include="src\DataStructures\DoubleLinkedList\DoubleLinkedList.cpp" />
+    <ClCompile Include="src\DataStructures\DoubleLinkedList\DoubleLinkedListNode.cpp" />
     <ClCompile Include="src\DataStructures\Binary Tree\BinaryTreeNode.cpp" />
     <ClCompile Include="src\DataStructures\Binary Tree\BinaryTree.cpp" />
     <ClCompile Include="src\DataStructures\LinkedList\LinkedListNode.cpp" />
     <ClCompile Include="src\DataStructures\LinkedList\LinkedList.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="src\DataStructures\Stack\Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DataStructures\Queue\Queue.h" />
+    <ClInclude Include="src\DataStructures\DoubleLinkedList\DoubleLinkedList.h" />
+    <ClInclude Include="src\DataStructures\DoubleLinkedList\DoubleLinkedListNode.h" />
     <ClInclude Include="src\DataStructures\Binary Tree\BinaryTreeNode.h" />
     <ClInclude Include="src\DataStructures\Binary Tree\BinaryTree.h" />
     <ClInclude Include="src\DataStructures\LinkedList\LinkedListNode.h" />
     <ClInclude Include="src\DataStructures\LinkedList\LinkedList.h" />
+    <ClInclude Include="src\DataStructures\Stack\Stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

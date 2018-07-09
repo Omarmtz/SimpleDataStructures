@@ -2,9 +2,9 @@
 #include <utility>
 
 template<typename T>
-LinkedList<T>::LinkedList():
+LinkedList<T>::LinkedList() :
 	size(0)
-{	
+{
 }
 
 template<typename T>
@@ -54,7 +54,7 @@ void LinkedList<T>::Remove(const T& item)
 		{
 			if (tmp == head)
 			{
-				head = tmp->next;				
+				head = tmp->next;
 			}
 			if (tmp == tail)
 			{
@@ -78,13 +78,17 @@ template<typename T>
 void LinkedList<T>::Clear()
 {
 	LinkedListNode<T>* tmp = head;
-	size = 0;
+
 	while (head != nullptr)
 	{
 		tmp = head;
 		head = head->next;
 		delete tmp;
-	}	
+	}
+
+	head = nullptr;
+	tail = nullptr;
+	size = 0;
 }
 
 template<typename T>
@@ -105,7 +109,13 @@ const T & LinkedList<T>::operator[](int index)
 	LinkedListNode<T>* tmp = head;
 	int counter = 0;
 	if (index > size || index < 0)
+	{
 		throw "Index out of bounds";
+	}		
+	if (size == 0)
+	{
+		throw "No element in list";
+	}
 
 	while (tmp != nullptr && counter < index)
 	{
@@ -124,7 +134,7 @@ int LinkedList<T>::Size() const
 
 template<typename T>
 LinkedListNode<T>* LinkedList<T>::FindNode(const T & value) const
-{	
+{
 	LinkedListNode<T>* tmp = head;
 
 	while (tmp != nullptr)
@@ -132,7 +142,7 @@ LinkedListNode<T>* LinkedList<T>::FindNode(const T & value) const
 		if (tmp->data == value)
 		{
 			return tmp;
-		}		
+		}
 		tmp = tmp->next;
 	}
 	return nullptr;
