@@ -70,6 +70,10 @@ void DoubleLinkedList<T>::PopFront()
 		{
 			tail = head->next;
 		}
+		if (head->next != nullptr)
+		{
+			head->next->previous = nullptr;
+		}
 
 		head = head->next;
 		size--;
@@ -93,12 +97,16 @@ const T& DoubleLinkedList<T>::GetHead()
 template<typename T>
 void DoubleLinkedList<T>::PopBack()
 {
-	DoubleLinkedListNode<T>* tmp = head;
+	DoubleLinkedListNode<T>* tmp = tail;
 	if (tail != nullptr)
 	{
 		if (head == tail)
 		{
 			head = tail->previous;
+		}
+		if (tail->previous != nullptr)
+		{
+			tail->previous->next = nullptr;
 		}
 
 		tail = tail->previous;

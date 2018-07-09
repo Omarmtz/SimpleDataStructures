@@ -39,6 +39,9 @@
     <ClCompile Include="src\DataStructures\Queue\Queue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\DataStructures\Stack\Stack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DataStructures\LinkedList\LinkedList.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\DataStructures\Queue\Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataStructures\Stack\Stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

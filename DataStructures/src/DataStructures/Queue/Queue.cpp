@@ -2,7 +2,7 @@
 
 template<typename T>
 Queue<T>::Queue():
-	DoubleLinkedList()
+	DoubleLinkedList<T>()
 {
 }
 

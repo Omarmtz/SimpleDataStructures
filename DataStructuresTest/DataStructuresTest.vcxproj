@@ -45,6 +45,7 @@
     </ClCompile>
     <ClCompile Include="QueueTests.cpp" />
     <ClCompile Include="SingleLinkedListTests.cpp" />
+    <ClCompile Include="StackTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.vcxproj">

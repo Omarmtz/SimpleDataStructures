@@ -2,7 +2,6 @@
 #include "../DoubleLinkedList/DoubleLinkedList.h"
 #include "../DoubleLinkedList/DoubleLinkedList.cpp"
 
-
 template<typename T>
 class Queue : public DoubleLinkedList<T>
 {
