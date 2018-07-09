@@ -9,8 +9,11 @@ public:
 	DoubleLinkedList();
 	virtual ~DoubleLinkedList();
 
-	void Add(T&& item);
-	void Add(const T& item);
+	void PushBack(T&& item);
+	void PushBack(const T& item);
+
+	void PushFront(T&& item);
+	void PushFront(const T& item);
 
 	void Remove(T&& item);
 	void Remove(const T& item);

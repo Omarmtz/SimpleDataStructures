@@ -13,13 +13,13 @@ DoubleLinkedList<T>::~DoubleLinkedList()
 }
 
 template<typename T>
-void DoubleLinkedList<T>::Add(T && item)
+void DoubleLinkedList<T>::PushBack(T && item)
 {
-	Add(std::forward<const T&>(item));
+	PushBack(std::forward<const T&>(item));
 }
 
 template<typename T>
-void DoubleLinkedList<T>::Add(const T & item)
+void DoubleLinkedList<T>::PushBack(const T & item)
 {
 	DoubleLinkedListNode<T>* newNode = new DoubleLinkedListNode<T>(item);
 	size++;
@@ -33,6 +33,30 @@ void DoubleLinkedList<T>::Add(const T & item)
 		newNode->previous = tail;
 		tail->next = newNode;
 		tail = newNode;
+	}
+}
+
+template<typename T>
+void DoubleLinkedList<T>::PushFront(T && item)
+{
+	PushFront(std::forward<const T&>(item));
+}
+
+template<typename T>
+void DoubleLinkedList<T>::PushFront(const T & item)
+{
+	DoubleLinkedListNode<T>* newNode = new DoubleLinkedListNode<T>(item);
+	size++;
+	if (head == nullptr)
+	{
+		head = newNode;
+		tail = newNode;
+	}
+	else
+	{
+		newNode->next = head;		
+		head->previous = newNode;
+		head = newNode;
 	}
 }
 
