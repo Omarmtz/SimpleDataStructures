@@ -66,13 +66,17 @@ void DoubleLinkedList<T>::PopFront()
 	DoubleLinkedListNode<T>* tmp = head;
 	if (head != nullptr)
 	{
-		head = head->next;				
-		size--;
 		if (head == tail)
 		{
 			tail = head->next;
 		}
-	}	
+
+		head = head->next;
+		size--;
+
+		delete tmp;
+		return;
+	}
 	throw "Cannot extract element, empty list";
 }
 
@@ -92,12 +96,16 @@ void DoubleLinkedList<T>::PopBack()
 	DoubleLinkedListNode<T>* tmp = head;
 	if (tail != nullptr)
 	{
-		tail = tail->previous;
-		size--;
 		if (head == tail)
 		{
 			head = tail->previous;
 		}
+
+		tail = tail->previous;
+		size--;
+
+		delete tmp;
+		return;
 	}
 	throw "Cannot extract element, empty list";
 }
