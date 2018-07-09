@@ -30,6 +30,12 @@
     <ClCompile Include="src\DataStructures\Binary Tree\BinaryTreeNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\DataStructures\DoubleLinkedList\DoubleLinkedListNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataStructures\DoubleLinkedList\DoubleLinkedList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DataStructures\LinkedList\LinkedList.h">
@@ -42,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\DataStructures\Binary Tree\BinaryTreeNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataStructures\DoubleLinkedList\DoubleLinkedListNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataStructures\DoubleLinkedList\DoubleLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
